@@ -6,17 +6,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private Button startButton;
     private volatile boolean stopThread = false;
+    private TextView txt;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         startButton = findViewById(R.id.button1);
+        txt = findViewById(R.id.textView);
     }
 
     public void mockFileDownloader(){
@@ -28,6 +31,17 @@ public class MainActivity extends AppCompatActivity {
         });
 
         for(int downloadProgress = 0; downloadProgress <= 100; downloadProgress=downloadProgress+10) {
+            if(stopThread){
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        startButton.setText("Start");
+                    }
+                });
+                return;
+            }
+
+            txt.setText("Download Progress: " + downloadProgress + "%");
             Log.d(TAG, "Download Progress: " + downloadProgress + "%");
             try {
                 Thread.sleep(1000);

@@ -24,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
         android:layout_marginEnd="1dp"
+        android:onClick="stopDownload"
         android:text="Stop"
         app:layout_constraintEnd_toEndOf="@+id/button1"
         app:layout_constraintTop_toBottomOf="@+id/button1" />
@@ -37,4 +38,14 @@
         android:text="Switch"
         app:layout_constraintStart_toStartOf="@+id/button2"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="60dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintEnd_toEndOf="@+id/button1" />
 </androidx.constraintlayout.widget.ConstraintLayout>
